@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"../balance"
+	"fmt"
 	"math/rand"
 	"os"
 	"time"
@@ -17,7 +17,7 @@ func main() {
 		insts = append(insts, one)
 	}
 
-	var balanceName = "random"
+	var balanceName = "Random"
 	if len(os.Args) > 1 {
 		balanceName = os.Args[1]
 	}
@@ -34,5 +34,3 @@ func main() {
 	}
 
 }
-
-
