@@ -7,8 +7,8 @@ type Instance struct {
 	port int
 }
 
-func NewInstance(host string, port int) *Instance{
-	return &Instance{host:host,port:port}
+func NewInstance(host string, port int) *Instance {
+	return &Instance{host: host, port: port}
 }
 
 func getHost(i *Instance) string {

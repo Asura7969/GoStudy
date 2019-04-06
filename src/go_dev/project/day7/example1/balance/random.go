@@ -6,15 +6,14 @@ import (
 )
 
 type RandomBalance struct {
+}
+
+func init() {
+	RegisterBalancer("Random", &RandomBalance{})
 
 }
 
-func init()  {
-	RegisterBalancer("Random",&RandomBalance{})
-	
-}
-
-func (r *RandomBalance)DoBalance(insts []*Instance, key ...string)(inst *Instance,err error){
+func (r *RandomBalance) DoBalance(insts []*Instance, key ...string) (inst *Instance, err error) {
 
 	if len(insts) < 1 {
 		err = errors.New("No Instance")

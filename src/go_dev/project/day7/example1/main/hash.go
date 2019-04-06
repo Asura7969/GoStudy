@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"../balance"
+	"fmt"
 	"hash/crc32"
 	"math/rand"
 )
@@ -33,4 +33,3 @@ func (p *HashBalance) DoBalance(insts []*balance.Instance, key ...string) (inst 
 
 	return
 }
-
