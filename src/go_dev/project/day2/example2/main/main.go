@@ -26,6 +26,7 @@ func main() {
 	for i, ss := range s {
 		println(i, ss)
 	}
+
 	s = append(s, 100)
 	println(s)
 
