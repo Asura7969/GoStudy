@@ -11,6 +11,7 @@ func main01() {
 }
 
 func main() {
+
 	//a,_ := strconv.ParseInt("1100100",2,32)
 	//b,_ := strconv.ParseInt("0144",8,32)
 	//c,_ := strconv.ParseInt("64",16,32)
