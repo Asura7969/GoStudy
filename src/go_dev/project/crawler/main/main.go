@@ -32,6 +32,7 @@ func main() {
 	})
 }
 func main01() {
+
 	resp, err := http.Get("https://www.lagou.com/gongsi/244-0-0")
 	if err != nil {
 		panic(err)
