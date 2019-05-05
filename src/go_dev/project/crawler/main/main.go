@@ -15,22 +15,24 @@ import (
 )
 
 func determineEncoding(r io.Reader) encoding.Encoding {
-	bytes, err := bufio.NewReader(r).Peek(1024)
+	reader := bufio.NewReader(r)
+	bytes, err := reader.Peek(1024)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("err is nil")
 	e, _, _ := charset.DetermineEncoding(bytes, "")
 
 	return e
 }
-func main01() {
+func main() {
 	engine.Run(engine.Request{
 		Url:       "https://www.lagou.com/gongsi/allCity.html?option=0-0-0-0",
 		PaserFunc: parser.ParserCityList,
 	})
 }
-func main() {
-	resp, err := http.Get("https://www.lagou.com/gongsi/270-0-0")
+func main01() {
+	resp, err := http.Get("https://www.lagou.com/gongsi/244-0-0")
 	if err != nil {
 		panic(err)
 	}

@@ -11,9 +11,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
 func Fetcher(url string) ([]byte, error) {
+	time.Sleep(time.Second * 5)
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
@@ -33,7 +35,8 @@ func Fetcher(url string) ([]byte, error) {
 }
 
 func determineEncoding(r io.Reader) encoding.Encoding {
-	bytes, err := bufio.NewReader(r).Peek(1024)
+	reader := bufio.NewReader(r)
+	bytes, err := reader.Peek(1024)
 	if err != nil {
 		log.Printf("Fetcher error :%v", err)
 		return unicode.UTF8
