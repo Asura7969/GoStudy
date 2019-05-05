@@ -22,9 +22,10 @@ func Fetcher(url string) ([]byte, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("Error:status code", resp.StatusCode)
+		return nil, fmt.Errorf("wrong status code: %d", resp.StatusCode)
 	}
 	// 自动转化编码
+	fmt.Println(url)
 	encode := determineEncoding(resp.Body)
 	utf8Reader := transform.NewReader(resp.Body, encode.NewDecoder())
 	return ioutil.ReadAll(utf8Reader)
