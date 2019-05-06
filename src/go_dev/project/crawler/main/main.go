@@ -1,6 +1,8 @@
 package main
 
 import (
+	"../engine"
+	"../lagou/parser"
 	"bufio"
 	"fmt"
 	"golang.org/x/net/html/charset"
@@ -9,20 +11,29 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"regexp"
 )
 
 func determineEncoding(r io.Reader) encoding.Encoding {
-	bytes, err := bufio.NewReader(r).Peek(1024)
+	reader := bufio.NewReader(r)
+	bytes, err := reader.Peek(1024)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("err is nil")
 	e, _, _ := charset.DetermineEncoding(bytes, "")
+
 	return e
 }
-
 func main() {
+	engine.Run(engine.Request{
+		Url:       "https://www.lagou.com/gongsi/allCity.html?option=0-0-0-0",
+		PaserFunc: parser.ParserCityList,
+	})
+}
+func main01() {
 
-	resp, err := http.Get("http://www.zhenai.com/zhenhun")
+	resp, err := http.Get("https://www.lagou.com/gongsi/244-0-0")
 	if err != nil {
 		panic(err)
 	}
@@ -41,5 +52,16 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Printf("%s\n", all)
+	printCityList(all)
+
+	//fmt.Printf("%s\n", all)
+}
+
+func printCityList(contents []byte) {
+	re := regexp.MustCompile(`<a href="(https://www.lagou.com/gongsi/[0-9]+-[0-9]+-[0-9]+)"[^>]*>([^<]+)</a>`)
+	matches := re.FindAllSubmatch(contents, -1)
+	for _, m := range matches {
+		fmt.Printf("City: %s,URL: %s\n", m[2], m[1])
+	}
+
 }
