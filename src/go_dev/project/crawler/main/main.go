@@ -16,7 +16,7 @@ import (
 
 func determineEncoding(r io.Reader) encoding.Encoding {
 	reader := bufio.NewReader(r)
-	bytes, err := reader.Peek(1024)
+	bytes, err := reader.Peek(512)
 	if err != nil {
 		panic(err)
 	}
