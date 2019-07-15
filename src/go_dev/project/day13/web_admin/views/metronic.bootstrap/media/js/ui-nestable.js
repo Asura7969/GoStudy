@@ -6,7 +6,7 @@ var UINestable = function () {
         if (window.JSON) {
             output.val(window.JSON.stringify(list.nestable('serialize'))); //, null, 2));
         } else {
-            output.val('JSON browser support required for this demo.');
+            output.val('JSON browser support required for this demo1.');
         }
     };
 

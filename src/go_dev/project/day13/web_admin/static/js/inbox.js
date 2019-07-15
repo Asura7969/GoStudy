@@ -51,8 +51,8 @@ var Inbox = function () {
                     'Bob Nilson <bob.nilson@metronic.com>',
                     'Lisa Miller <lisa.miller@metronic.com>',
                     'Test <test@domain.com>',
-                    'Dino <dino@demo.com>',
-                    'Support <support@demo.com>']
+                    'Dino <dino@demo1.com>',
+                    'Support <support@demo1.com>']
             }
         });
     }
